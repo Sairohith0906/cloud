@@ -103,3 +103,52 @@
 .signin a:hover{
     color: #2563eb;
 }
+
+.email-verify {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+}
+
+.email-verify input {
+    flex: 1; 
+}
+
+
+.email-verify-btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding: 10px;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+
+.otp-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.otp-box input {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    font-size: 18px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    outline: none;
+}
+
+.checkbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+}

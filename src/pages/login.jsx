@@ -27,6 +27,10 @@ function Login() {
                             Login
                         </button>
 
+                        <div className='signin'>
+                            <p>Don't have an account?  <a href='#signup'>Register</a></p>
+                        </div>
+
                     </form>
                 </div>
 
