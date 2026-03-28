@@ -1,5 +1,5 @@
 import '../styles/signup.css'
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 function Signup() {
     const input1 = useRef();
@@ -7,12 +7,28 @@ function Signup() {
     const input3 = useRef();
     const input4 = useRef();
 
-    const handleChange = (e, nextRef) => {
-    if (e.target.value && nextRef) {
-        nextRef.current.focus();
-    }
-};
+    const [showOtp, setShowOtp] = useState(false);
+    const [checked, setChecked] = useState(false);
 
+    const handleVerifyClick = (e) => {
+        e.preventDefault(); // prevent form reload
+        setShowOtp(true);
+    };
+
+    const handleChange = (e, nextRef) => {
+        if (e.target.value && nextRef) {
+            nextRef.current.focus();
+        }
+
+        // Check OTP completeness
+        const otp =
+            (input1.current?.value || '') +
+            (input2.current?.value || '') +
+            (input3.current?.value || '') +
+            (input4.current?.value || '');
+
+        setChecked(otp.length === 4);
+    };
 
     const handleKeyDown = (e, prevRef) => {
         if (e.key === "Backspace" && !e.target.value && prevRef) {
@@ -27,9 +43,8 @@ function Signup() {
             input3.current.value +
             input4.current.value;
 
-        console.log(otp);
+        console.log("OTP:", otp);
     };
-    const clicked = false;
 
     return (
         <div className='main'>
@@ -47,47 +62,90 @@ function Signup() {
                             <label>User Name</label>
                             <input type="text" placeholder="Enter your username" />
                         </div>
+
                         <div className='input-group'>
                             <label>Name</label>
                             <input type="text" placeholder="Enter your name" />
                         </div>
+
                         <div className='input-group'>
                             <label>Email</label>
+
                             <div className='email-verify'>
                                 <input type="email" placeholder="Enter your email" />
-                                <button className='email-verify-btn'>Verify</button>
+
+                                <button 
+                                    className='email-verify-btn'
+                                    onClick={handleVerifyClick}
+                                >
+                                    Verify
+                                </button>
                             </div>
-                            <div className='otp'>
-                                <div className='otp-box'>
-                                    <input ref={input1} maxLength="1" onChange={(e) => handleChange(e, input2)}/>
 
-                                    <input ref={input2} maxLength="1" onChange={(e) => handleChange(e, input3)} onKeyDown={(e) => handleKeyDown(e, input1)}/>
+                            {/* OTP SECTION */}
+                            {showOtp && (
+                                <div className='otp'>
+                                    <div className='otp-box'>
 
-                                    <input ref={input3} maxLength="1" onChange={(e) => handleChange(e, input4)} onKeyDown={(e) => handleKeyDown(e, input2)}/>
+                                        <input
+                                            ref={input1}
+                                            maxLength="1"
+                                            onChange={(e) => handleChange(e, input2)}
+                                        />
 
-                                    <input ref={input4} maxLength="1" onChange={print} onKeyDown={(e) => handleKeyDown(e, input3)}/>
-                                    <div className="checkbox">
-                                        <input type="checkbox" id="agree" />
+                                        <input
+                                            ref={input2}
+                                            maxLength="1"
+                                            onChange={(e) => handleChange(e, input3)}
+                                            onKeyDown={(e) => handleKeyDown(e, input1)}
+                                        />
+
+                                        <input
+                                            ref={input3}
+                                            maxLength="1"
+                                            onChange={(e) => handleChange(e, input4)}
+                                            onKeyDown={(e) => handleKeyDown(e, input2)}
+                                        />
+
+                                        <input
+                                            ref={input4}
+                                            maxLength="1"
+                                            onChange={(e) => {
+                                                handleChange(e, null);
+                                                print();
+                                            }}
+                                            onKeyDown={(e) => handleKeyDown(e, input3)}
+                                        />
+
+                                        <div className="checkbox">
+                                            <input
+                                                type="checkbox"
+                                                checked={checked}
+                                                readOnly
+                                            />
+                                        </div>
+
                                     </div>
                                 </div>
-                            </div>
+                            )}
                         </div>
 
                         <div className='input-group'>
                             <label>Create Password</label>
                             <input type="password" placeholder="Enter your password" />
                         </div>
+
                         <div className='input-group'>
-                            <label>Conform Password</label>
+                            <label>Confirm Password</label>
                             <input type="password" placeholder="Enter your password" />
                         </div>
 
                         <button type="submit" className='login-btn'>
-                            Login
+                            Signup
                         </button>
 
                         <div className='signin'>
-                            <p>Have an account?  <a href='#signup'>Login</a></p>
+                            <p>Have an account? <a href='#signup'>Login</a></p>
                         </div>
 
                     </form>
@@ -98,4 +156,4 @@ function Signup() {
     )
 }
 
-export default Signup
+export default Signup;
