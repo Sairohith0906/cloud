@@ -1,0 +1,431 @@
+/* RESET (keep this global if needed in App.css instead) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* HEADER */
+.homeHeader {
+    border-bottom: 1px solid black;
+    padding: 0 40px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.headerContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navSection {
+    display: flex;
+    gap: 70px;
+    align-items: center;
+}
+
+.brandLogo h2 {
+    font-size: 32px;
+    color: #111827;
+}
+
+.navLinks {
+    display: flex;
+    gap: 30px;
+    font-size: 24px;
+}
+
+.navLinks a {
+    text-decoration: none;
+    color: #374151;
+}
+
+.navLinks a:hover {
+    color: #3b82f6;
+}
+
+/* SIDENAV */
+.sideNav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background-color: black;
+    padding-top: 50px;
+    z-index: 1000;
+    transform: translateX(-100%);
+    transition: transform 0.4s ease;
+}
+
+.sideNav.active {
+    transform: translateX(0);
+}
+
+.sideNav a {
+    padding: 10px 32px;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    display: block;
+}
+
+.sideNav a:hover {
+    color: #3b82f6;
+}
+
+.closeBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.menuIcon {
+    display: none;
+    cursor: pointer;
+}
+
+.menuIcon span {
+    font-size: 30px;
+}
+
+/* BUTTONS */
+.authButtons {
+    display: flex;
+    gap: 12px;
+}
+
+.authButtons button {
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.signUpBtn {
+    background-color: #3b82f6;
+    color: white;
+}
+
+.signUpBtn:hover {
+    background-color: #2563eb;
+}
+
+.signInBtn {
+    background-color: #e5e7eb;
+}
+
+.signInBtn:hover {
+    background-color: #d1d5db;
+}
+
+/* HERO */
+.heroSection {
+    height: calc(100vh - 70px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid black;
+    background-color: white;
+}
+
+.heroText {
+    text-align: center;
+}
+
+.heroText h1 {
+    font-size: 60px;
+    margin-bottom: 20px;
+    color: #111827;
+}
+
+.heroText p {
+    font-size: 30px;
+    color: #4b5563;
+}
+
+.heroCTA button {
+    margin-top: 20px;
+    height: 60px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    background-color: #3b82f6;
+    color: white;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.heroCTA button:hover {
+    background-color: #2563eb;
+    transform: translateY(-2px);
+}
+
+/* PRICING */
+.pricingSection {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 20px;
+    border-bottom: 1px solid black;
+    background-color: white;
+}
+
+.sectionTitle {
+    font-size: 60px;
+    margin-bottom: 50px;
+    text-align: center;
+    color: #111827;
+}
+
+.pricingGrid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.pricingCard {
+    height: 300px;
+    width: 300px;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: white;
+}
+
+.pricingCard:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.planName {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #111827;
+}
+
+.pricingCard p:last-child {
+    font-size: 36px;
+    font-weight: bold;
+    color: #3b82f6;
+}
+
+.pricingCard small {
+    font-size: 16px;
+    font-weight: normal;
+    color: #6b7280;
+}
+
+/* CONTACT */
+.contactSection {
+    width: 100%;
+    min-height: 100vh;
+    padding: 80px 20px;
+    background-color: #f9fafb;
+}
+
+.contactSection .sectionTitle {
+    font-size: 60px;
+    margin-bottom: 50px;
+    text-align: center;
+    color: #111827;
+}
+
+.contactForm {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.contactForm > div {
+    width: 50%;
+    max-width: 500px;
+    min-width: 300px;
+    background-color: #e5e7eb;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contactForm > div:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+}
+
+.formRow {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.formRow .formGroup {
+    flex: 1;
+}
+
+.formGroup {
+    margin-bottom: 20px;
+}
+
+.formGroup label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    color: #374151;
+}
+
+.formGroup input,
+.formGroup textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 16px;
+    font-family: inherit;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #ffffff;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.formGroup input:hover,
+.formGroup textarea:hover {
+    border-color: #9ca3af;
+}
+
+.submitBtn {
+    background-color: #3b82f6;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    width: 100%;
+    font-weight: 600;
+}
+
+.submitBtn:hover {
+    background-color: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.submitBtn:active {
+    transform: translateY(0);
+}
+
+/* FOOTER */
+.footer {
+    width: 100%;
+    height: 40vh;
+    background-color: #111827;
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 900px) {
+    .navLinks {
+        display: none;
+    }
+
+    .menuIcon {
+        display: block;
+    }
+
+    .navSection {
+        gap: 30px;
+    }
+
+    .authButtons button {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+
+    .heroText h1 {
+        font-size: 40px;
+    }
+
+    .heroText p {
+        font-size: 20px;
+    }
+
+    .sectionTitle {
+        font-size: 40px;
+    }
+
+    .pricingGrid {
+        gap: 20px;
+    }
+
+    .pricingCard {
+        width: 250px;
+        height: 250px;
+    }
+
+    .contactSection .sectionTitle {
+        font-size: 40px;
+    }
+
+    .contactForm {
+        justify-content: center;
+    }
+
+    .contactForm > div {
+        width: 100%;
+        max-width: 500px;
+        padding: 30px;
+    }
+
+    .formRow {
+        flex-direction: column;
+        gap: 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .contactForm > div {
+        padding: 20px;
+    }
+    
+    .submitBtn {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+}

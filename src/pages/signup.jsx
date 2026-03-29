@@ -1,4 +1,5 @@
-import '../styles/signup.css'
+import styles from '../styles/signup.module.css';
+import { Link } from 'react-router-dom';
 import { useRef, useState } from 'react';
 
 function Signup() {
@@ -11,7 +12,7 @@ function Signup() {
     const [checked, setChecked] = useState(false);
 
     const handleVerifyClick = (e) => {
-        e.preventDefault(); // prevent form reload
+        e.preventDefault();
         setShowOtp(true);
     };
 
@@ -20,7 +21,6 @@ function Signup() {
             nextRef.current.focus();
         }
 
-        // Check OTP completeness
         const otp =
             (input1.current?.value || '') +
             (input2.current?.value || '') +
@@ -47,45 +47,44 @@ function Signup() {
     };
 
     return (
-        <div className='main'>
-            <div className='card'>
+        <div className={styles.main}>
+            <div className={styles.card}>
 
-                <div className='logo'>
+                <div className={styles.logo}>
                     <h1>CLOUD</h1>
                     <p>Welcome back</p>
                 </div>
 
-                <div className='login-card'>
-                    <form className='form-items'>
+                <div className={styles["login-card"]}>
+                    <form className={styles["form-items"]}>
 
-                        <div className='input-group'>
+                        <div className={styles["input-group"]}>
                             <label>User Name</label>
                             <input type="text" placeholder="Enter your username" />
                         </div>
 
-                        <div className='input-group'>
+                        <div className={styles["input-group"]}>
                             <label>Name</label>
                             <input type="text" placeholder="Enter your name" />
                         </div>
 
-                        <div className='input-group'>
+                        <div className={styles["input-group"]}>
                             <label>Email</label>
 
-                            <div className='email-verify'>
+                            <div className={styles["email-verify"]}>
                                 <input type="email" placeholder="Enter your email" />
 
                                 <button 
-                                    className='email-verify-btn'
+                                    className={styles["email-verify-btn"]}
                                     onClick={handleVerifyClick}
                                 >
                                     Verify
                                 </button>
                             </div>
 
-                            {/* OTP SECTION */}
                             {showOtp && (
-                                <div className='otp'>
-                                    <div className='otp-box'>
+                                <div className={styles.otp}>
+                                    <div className={styles["otp-box"]}>
 
                                         <input
                                             ref={input1}
@@ -117,7 +116,7 @@ function Signup() {
                                             onKeyDown={(e) => handleKeyDown(e, input3)}
                                         />
 
-                                        <div className="checkbox">
+                                        <div className={styles.checkbox}>
                                             <input
                                                 type="checkbox"
                                                 checked={checked}
@@ -130,22 +129,22 @@ function Signup() {
                             )}
                         </div>
 
-                        <div className='input-group'>
+                        <div className={styles["input-group"]}>
                             <label>Create Password</label>
                             <input type="password" placeholder="Enter your password" />
                         </div>
 
-                        <div className='input-group'>
+                        <div className={styles["input-group"]}>
                             <label>Confirm Password</label>
                             <input type="password" placeholder="Enter your password" />
                         </div>
 
-                        <button type="submit" className='login-btn'>
+                        <button type="submit" className={styles["login-btn"]}>
                             Signup
                         </button>
 
-                        <div className='signin'>
-                            <p>Have an account? <a href='#signup'>Login</a></p>
+                        <div className={styles.signin}>
+                            <p>Have an account? <Link to = "/login">Login</Link></p>
                         </div>
 
                     </form>
@@ -153,7 +152,7 @@ function Signup() {
 
             </div>
         </div>
-    )
+    );
 }
 
 export default Signup;

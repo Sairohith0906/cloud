@@ -1,34 +1,38 @@
-import '../styles/login.css'
+import styles from '../styles/login.module.css';
+import {Link} from "react-router-dom";
 
 function Login() {
     return (
-        <div className='main'>
-            <div className='card'>
+        <div className={styles.main}>
+            <div className={styles.card}>
 
-                <div className='logo'>
+                <div className={styles.logo}>
                     <h1>CLOUD</h1>
                     <p>Welcome back</p>
                 </div>
 
-                <div className='login-card'>
-                    <form className='form-items'>
+                <div className={styles["login-card"]}>
+                    <form className={styles["form-items"]}>
 
-                        <div className='input-group'>
+                        <div className={styles["input-group"]}>
                             <label>User Name</label>
                             <input type="text" placeholder="Enter your username" />
                         </div>
 
-                        <div className='input-group'>
+                        <div className={styles["input-group"]}>
                             <label>Password</label>
                             <input type="password" placeholder="Enter your password" />
                         </div>
 
-                        <button type="submit" className='login-btn'>
+                        <button type="submit" className={styles["login-btn"]}>
                             Login
                         </button>
 
-                        <div className='signin'>
-                            <p>Don't have an account?  <a href='#signup'>Register</a></p>
+                        <div className={styles.signin}>
+                            <p>
+                                Don't have an account?  
+                                <Link to = "/signup"> Register</Link>
+                            </p>
                         </div>
 
                     </form>
@@ -36,7 +40,7 @@ function Login() {
 
             </div>
         </div>
-    )
+    );
 }
 
-export default Login
+export default Login;
